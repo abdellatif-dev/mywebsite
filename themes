@@ -1,0 +1,23 @@
+background: '#090A0F'
+foreground: '#AAAAAA'
+
+normal:
+  black:   '#0F111A'
+  red:     '#D41919'
+  green:   '#5E97AF'
+  yellow:  '#FAC86A'
+  blue:    '#A574C3'
+  magenta: '#57F199'
+  cyan:    '#505A7A'
+  white:   '#F9FAFD'
+ 
+bright:
+  black:   '#45BABF'
+  red:     '#EC0101'
+  green:   '#89DDFF'
+  yellow:  '#E98567'
+  blue:    '#B797CA'
+  magenta: '#A9FECD'
+  cyan:    '#B2B2CC'
+  white:   '#A4A4A4'
+
