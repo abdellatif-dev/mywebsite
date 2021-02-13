@@ -4,6 +4,25 @@
   padding: 0;
   box-sizing: border-box;
   text-rendering: optimizeLegibility;
+  color: #aaaaaa;
+}
+
+body {
   background-color: #090a0f;
   color: #aaaaaa;
+}
+
+#header {
+  background: #000000;
+  padding: 10px 8px;
+  display: flex;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  justify-content: space-between;
+  font-size: 28px;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
