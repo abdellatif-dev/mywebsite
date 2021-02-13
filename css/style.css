@@ -4,5 +4,6 @@
   padding: 0;
   box-sizing: border-box;
   text-rendering: optimizeLegibility;
+  background-color: #090a0f;
+  color: #aaaaaa;
 }
-
