@@ -14,15 +14,35 @@ body {
 
 #header {
   background: #000000;
-  padding: 10px 8px;
+  padding: 10px;
   display: flex;
   position: fixed;
   width: 100%;
   top: 0;
   justify-content: space-between;
   font-size: 28px;
-  color: white;
+  color: #aaaaaa;
   position: sticky;
   top: 0;
   z-index: 1;
+}
+.titleh1 {
+  padding: 10px 20px;
+  color: #b2b2cc;
+}
+
+.text {
+  background-color: #0f111a;
+  margin: 20px;
+  box-shadow: 9px -9px black;
+  font-size: 150%;
+}
+
+a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  color: #45babf;
 }
