@@ -38,9 +38,11 @@ body {
 }
 
 #social {
-  text-align: center;
   width: 50%;
   margin-left: 20%;
+  text-align: center;
+  border: medium dashed #57f199;
+  padding: 0 0 10px 20px;
 }
 
 a {
