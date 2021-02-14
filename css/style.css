@@ -33,14 +33,14 @@ body {
 .text {
   background-color: #0f111a;
   margin: 20px;
-  box-shadow: 9px -9px #505a7a30;
+  padding: 10px;
+  box-shadow: 9px -9px #5e97af50;
+  border: medium dashed #57f199;
   font-size: 130%;
 }
 
 #social {
   text-align: center;
-  border: medium dashed #57f199;
-  padding: 0 0 10px 20px;
 }
 
 a {
