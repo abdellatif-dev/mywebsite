@@ -9,7 +9,6 @@
 
 body {
   background-color: #090a0f;
-  color: #aaaaaa;
 }
 
 #header {
@@ -28,21 +27,28 @@ body {
 }
 .titleh1 {
   padding: 10px 20px;
-  color: #b2b2cc;
+  color: #a9fecd;
 }
 
 .text {
   background-color: #0f111a;
   margin: 20px;
-  box-shadow: 9px -9px black;
-  font-size: 150%;
+  box-shadow: 9px -9px #505a7a30;
+  font-size: 130%;
+}
+
+#social {
+  text-align: center;
+  width: 50%;
+  margin-left: 20%;
 }
 
 a {
   text-decoration: none;
-  font-weight: bold;
+  font-size: 25px;
 }
 
 a:hover {
   color: #45babf;
+  font-weight: bold;
 }
