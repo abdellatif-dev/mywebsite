@@ -12,7 +12,7 @@ body {
 }
 
 #header {
-  background: #000000;
+  background: #505a7a30;
   padding: 10px;
   display: flex;
   position: fixed;
@@ -35,7 +35,7 @@ body {
   margin: 20px;
   padding: 10px;
   box-shadow: 9px -9px #5e97af50;
-  border: medium dashed #57f199;
+  border: medium dashed #a574c3; 
   font-size: 130%;
 }
 
