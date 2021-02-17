@@ -25,7 +25,7 @@ body {
   top: 0;
   z-index: 1;
 }
-.titleh1 {
+.title {
   padding: 10px 20px;
   color: #a9fecd;
 }
@@ -51,4 +51,11 @@ a {
 a:hover {
   color: #45babf;
   font-weight: bold;
+  text-decoration: dashed;
+}
+
+footer{
+  text-align: center;
+  background: black;
+  font-size: 15px;
 }
