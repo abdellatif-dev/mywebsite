@@ -53,8 +53,7 @@ a:hover {
   font-weight: bold;
   text-decoration: dashed;
 }
-
-footer{
+#copyright{
   text-align: center;
   background: black;
   font-size: 15px;
