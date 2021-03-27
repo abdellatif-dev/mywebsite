@@ -1,0 +1,8 @@
+user-agent: *
+
+Disallow: /.git/
+Disallow: /favicon.ico
+Disallow : /css/
+Disallow: /README.md
+Disallow: /test.py
+Disallow: ./LICENSE
