@@ -36,6 +36,7 @@ body {
 }
 .title {
   padding: 10px 20px;
+  font-size: 30px;
   color: var(--title-color);
 }
 
@@ -48,17 +49,9 @@ body {
   font-size: 130%;
 }
 
-#social {
-  text-align: center;
-}
-
-.writeup {
-  background-color: var(--background-color-body);
-  margin: 20px;
-  padding: 10px;
-  box-shadow: 9px -9px var(--shadow-color);
-  border: medium dashed var(--border-color);
-  font-size: 130%;
+/* .language-sh{ */
+/* } */
+.writeup{
   text-align: center;
 }
 

@@ -4,14 +4,15 @@ import http.server
 import socketserver
 
 PORT = 8080
+HOST = "127.0.0.1"
 Handler = http.server.SimpleHTTPRequestHandler
 
-with socketserver.TCPServer(("127.0.0.1", PORT), Handler) as httpd:
+with socketserver.TCPServer((HOST, PORT), Handler) as httpd:
     try:
-        print("serving at port", PORT)
+        print(f"serving at {HOST}:{PORT}")
         httpd.serve_forever()
-    except KeyboardInterrupt:
-        httpd.socketserver()
-        exit("stopping..")
     except:
-        httpd.socketserver()
+        httpd.shutdown()
+        exit("stopping..")
+
+httpd.shutdown()

