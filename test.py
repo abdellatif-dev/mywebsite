@@ -13,6 +13,6 @@ with socketserver.TCPServer((HOST, PORT), Handler) as httpd:
         httpd.serve_forever()
     except:
         httpd.shutdown()
-        exit("stopping..")
+        exit("\nclosing dev server...")
 
 httpd.shutdown()
