@@ -47,10 +47,6 @@ body {
   color: var(--title-color);
 }
 
-.text img {
-  width: 90%;
-  height: auto;
-}
 .text {
   background-color: var(--background-color-block);
   margin: 20px;

@@ -3,7 +3,7 @@
 import http.server
 import socketserver
 
-PORT = 8080
+PORT = 5500
 HOST = "127.0.0.1"
 Handler = http.server.SimpleHTTPRequestHandler
 
