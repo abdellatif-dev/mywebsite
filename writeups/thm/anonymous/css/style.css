@@ -2,11 +2,18 @@
 :root {
   --font_color: #aaaaaa;
   --background-color-body: #090a0f;
+  --background-color-block: #0f111a;
   --background-color-header: #0f111f;
   --title-color: #a9fecd;
   --a-hover-color: #5e97af;
   --shadow-color: #5e97af50;
   --border-color: #a574c3;
+  
+  /* python */
+  --python-commment:#6e6efe;
+  --python-function:#89ddff;
+  --python-extra: #57f199;
+  --python-myfuncions:#e98567;
 }
 * {
   margin: 0;
@@ -40,8 +47,12 @@ body {
   color: var(--title-color);
 }
 
+.text img {
+  width: 90%;
+  height: auto;
+}
 .text {
-  background-color: var(--background-color-body);
+  background-color: var(--background-color-block);
   margin: 20px;
   padding: 10px;
   box-shadow: 9px -9px var(--shadow-color);
@@ -69,4 +80,19 @@ a:hover {
   text-align: center;
   background: black;
   font-size: 15px;
+}
+
+/* python code */
+.python_comment {
+  color: var(--python-commment);
+}
+.python_func {
+  color: var(--python-function);
+}
+
+.python_extra {
+  color: var(--python-extra);
+}
+.python_myfuncions {
+  color: var(--python-myfuncions);
 }

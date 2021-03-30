@@ -1,10 +1,11 @@
 /* shared */
 :root {
   --font_color: #222222;
-  --background-color-body: #f9faf0;
+  --background-color-body: #fff0d5;
+  --background-color-block: #f9faf0;
   --background-color-header: #fac86a;
   --title-color:  #527b63;
-  --a-hover-color: #9be1ff;
+  --a-hover-color: #f80c0c;
   --shadow-color: #5e97af50;
   --border-color: #a574c3;
   --footer-color: #ddd;
@@ -42,7 +43,7 @@ body {
 }
 
 .writeup {
-  background-color: var(--background-color-body);
+  background-color: var(--background-color-block);
   margin: 20px;
   padding: 10px;
   box-shadow: 9px -9px var(--shadow-color);

@@ -2,6 +2,7 @@
 :root {
   --font_color: #aaaaaa;
   --background-color-body: #090a0f;
+  --background-color-block: #0f111a;
   --background-color-header: #0f111f;
   --title-color: #a9fecd;
   --a-hover-color: #5e97af;
@@ -41,7 +42,7 @@ body {
 }
 
 .writeup {
-  background-color: var(--background-color-body);
+  background-color: var(--background-color-block);
   margin: 20px;
   padding: 10px;
   box-shadow: 9px -9px var(--shadow-color);
