@@ -10,6 +10,7 @@
   --border-color: #a574c3;
 }
 
+
 * {
   margin: 0;
   padding: 0;
@@ -36,6 +37,22 @@ body {
   top: 0;
   z-index: 1;
 }
+
+.theme_btn {
+  background-color: var(--background-color-header);
+  padding: 0 20px 0 20px;
+  color: var(--font-color);
+  font-size: 20px;
+  border: none;
+}
+
+.theme_btn:hover {
+background-color: var(--background-color-block);
+color: var(--title-color);
+border: var(--border-color) 2px solid;
+
+}
+
 .title {
   padding: 10px 20px;
   color: var(--title-color);

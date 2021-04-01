@@ -7,7 +7,7 @@
   --title-color:  #527b63;
   --a-hover-color: #f80c0c;
   --shadow-color: #5e97af50;
-  --border-color: #a574c3;
+  --border-color: #51b7d6;
   --footer-color: #ddd;
   
   /* python */
@@ -42,6 +42,21 @@ body {
   top: 0;
   z-index: 1;
 }
+.theme_btn {
+  background-color: var(--background-color-header);
+  padding: 0 20px 0 20px;
+  color: var(--font-color);
+  font-size: 20px;
+  border: none;
+}
+
+.theme_btn:hover {
+  background-color: var(--background-color-block);
+  color: var(--title-color);
+  border: var(--border-color) 2px solid;
+
+}
+
 .title {
   padding: 10px 20px;
   font-size: 30px;
