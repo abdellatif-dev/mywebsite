@@ -5,4 +5,4 @@ my website
 [abdellatifdev](https://abdellatifdev.xyz/)
 
 ## stats
-[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=abdellatif-dev)](https://github.com/abdellatif-dev/github-readme-stats)
+![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=abdellatif-dev&show_icons=true&theme=radical)
