@@ -9,6 +9,7 @@
   --shadow-color: #5e97af50;
   --border-color: #a574c3;
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -35,6 +36,7 @@ body {
   top: 0;
   z-index: 1;
 }
+
 .title {
   padding: 10px 20px;
   font-size: 30px;
@@ -75,6 +77,7 @@ a:hover {
   font-weight: bold;
   text-decoration: dashed;
 }
+
 #copyright {
   text-align: center;
   background: black;

@@ -8,13 +8,14 @@
   --a-hover-color: #5e97af;
   --shadow-color: #5e97af50;
   --border-color: #a574c3;
-  
+
   /* python */
-  --python-commment:#6e6efe;
-  --python-function:#89ddff;
+  --python-commment: #6e6efe;
+  --python-function: #89ddff;
   --python-extra: #57f199;
-  --python-myfuncions:#e98567;
+  --python-myfuncions: #e98567;
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -41,6 +42,7 @@ body {
   top: 0;
   z-index: 1;
 }
+
 .theme_btn {
   background-color: var(--background-color-header);
   padding: 0 20px 0 20px;
@@ -72,7 +74,7 @@ body {
 
 /* .language-sh{ */
 /* } */
-.writeup{
+.writeup {
   text-align: center;
 }
 
@@ -86,6 +88,7 @@ a:hover {
   font-weight: bold;
   text-decoration: dashed;
 }
+
 #copyright {
   text-align: center;
   background: black;
@@ -96,6 +99,7 @@ a:hover {
 .python_comment {
   color: var(--python-commment);
 }
+
 .python_func {
   color: var(--python-function);
 }
@@ -103,6 +107,7 @@ a:hover {
 .python_extra {
   color: var(--python-extra);
 }
+
 .python_myfuncions {
   color: var(--python-myfuncions);
 }

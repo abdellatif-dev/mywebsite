@@ -4,12 +4,13 @@
   --background-color-body: #fff0d5;
   --background-color-block: #f9faf0;
   --background-color-header: #fac86a;
-  --title-color:  #527b63;
+  --title-color: #527b63;
   --a-hover-color: #f80c0c;
   --shadow-color: #5e97af50;
   --border-color: #51b7d6;
   --footer-color: #ddd;
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -36,6 +37,7 @@ body {
   top: 0;
   z-index: 1;
 }
+
 .theme_btn {
   background-color: var(--background-color-header);
   padding: 0 20px 0 20px;
@@ -76,6 +78,7 @@ a:hover {
   font-weight: bold;
   text-decoration: dashed;
 }
+
 #copyright {
   text-align: center;
   background: var(--footer-color);
