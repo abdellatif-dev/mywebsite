@@ -11,8 +11,11 @@ with socketserver.TCPServer((HOST, PORT), Handler) as httpd:
     try:
         print(f"serving at {HOST}:{PORT}")
         httpd.serve_forever()
-    except:
+    except KeyboardInterrupt:
         httpd.shutdown()
         exit("\nclosing dev server...")
+    except :
+        httpd.shutdown()
+        exit("\nerror happened...")
 
 httpd.shutdown()

@@ -10,7 +10,6 @@
   --border-color: #a574c3;
 }
 
-
 * {
   margin: 0;
   padding: 0;
@@ -50,7 +49,6 @@ body {
   background-color: var(--background-color-block);
   color: var(--title-color);
   border: var(--border-color) 2px solid;
-
 }
 
 .title {
@@ -97,3 +95,4 @@ a:hover {
   background: black;
   font-size: 15px;
 }
+
