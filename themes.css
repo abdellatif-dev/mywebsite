@@ -1,22 +1,22 @@
-* {
-  background: #090a0f;
-  color: #aaaaaa;
+:root {
+    --background: #090a0f;
+    --color: #aaaaaa;
 
-  color: #0f111a;
-  color: #d41919;
-  color: #5e97af;
-  color: #fac86a;
-  color: #a574c3;
-  color: #57f199;
-  color: #505a7a;
-  color: #f9fafd;
+    --color: #0f111a;
+    --color: #d41919;
+    --color: #5e97af;
+    --color: #fac86a;
+    --color: #a574c3;
+    --color: #57f199;
+    --color: #505a7a;
+    --color: #f9fafd;
 
-  color: #45babf;
-  color: #ec0101;
-  color: #89ddff;
-  color: #e98567;
-  color: #b797ca;
-  color: #a9fecd;
-  color: #b2b2cc;
-  color: #a4a4a4;
+    --color: #45babf;
+    --color: #ec0101;
+    --color: #89ddff;
+    --color: #e98567;
+    --color: #b797ca;
+    --color: #a9fecd;
+    --color: #b2b2cc;
+    --color: #a4a4a4;
 }

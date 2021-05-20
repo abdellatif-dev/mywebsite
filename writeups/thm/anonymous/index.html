@@ -1,108 +1,108 @@
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-    <meta name="robots" content="index,follow" />
-    <meta name="description" content="abdellatif's page | Anonymous Playground" />
-    <meta name="have-i-been-pwned-verification" value="d9a0243f4262d664aa0a7e841132bbb0">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link id="css" rel="stylesheet" href="css/style.css"/>
-    <title>Anonymous Playground</title>
-  </head>
-  <body>
-    <nav id="header">
-      <h5><strong>Anonymous Playground</strong></h5>
-      <button id="themebtn" class="theme_btn">theme</button>
-      <script src="/js/theme.js"></script>
-      <ul>
-          <a href="/">home</a>
-          <a href="/writeups/">writeups</a>
-      </ul>
-    </nav>
-    <div>
-        <h1 class="title">gathering informations</h1>
-        <!-- write_up -->
-        <div class="text">
-            <p class="title"><b>nmap:</b></p>
-            <ul class="writeup">
-                <code class="language-sh"><b style="color:#57f199;">sudo nmap</b><b style="color:#505a7a;"> -sS -sC -sV -v</b><b> &lt;MACHINE_IP&gt;</b></code>
-                <p>-Pn: Disables host discovery.</p></li>
-                <p>-sV: Performs version detection for the services.</p></li>
-                <p>-sC: Performs a script scan using default scripts available in NMAP.</p></li>
-                <p>-v: Provides verbose details about the NMAP scan</p></li>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <meta name="robots" content="index,follow" />
+        <meta name="description" content="abdellatif's page | Anonymous Playground" />
+        <meta name="have-i-been-pwned-verification" value="d9a0243f4262d664aa0a7e841132bbb0">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <link id="css" rel="stylesheet" href="css/style.css"/>
+        <title>Anonymous Playground</title>
+    </head>
+    <body>
+        <nav id="header">
+            <h5><strong>Anonymous Playground</strong></h5>
+            <button id="themebtn" class="theme_btn">theme</button>
+            <script src="/js/theme.js"></script>
+            <ul>
+                <a href="/">home</a>
+                <a href="/writeups/">writeups</a>
             </ul>
-          <div class="writeup" >
-            <p><br>
-            <p class="title"><b>results:</b></p>
+        </nav>
+        <div>
+            <h1 class="title">gathering informations</h1>
+            <!-- write_up -->
+            <div class="text">
+                <p class="title"><b>nmap:</b></p>
+                <ul class="writeup">
+                    <code class="language-sh"><b style="color:#57f199;">sudo nmap</b><b style="color:#505a7a;"> -sS -sC -sV -v</b><b> &lt;MACHINE_IP&gt;</b></code>
+                    <p>-Pn: Disables host discovery.</p></li>
+                <p>-sV: Performs version detection for the services.</p></li>
+            <p>-sC: Performs a script scan using default scripts available in NMAP.</p></li>
+        <p>-v: Provides verbose details about the NMAP scan</p></li>
+                </ul>
+                <div class="writeup" >
+                    <p><br>
+                    <p class="title"><b>results:</b></p>
 
-            the scan found two open posts <b> port 80(http) </b> and <b>port 22(ssh)</b>
-            </p>
-          </div>
-        </div>
-        <h1 class="title">web http</h1>
-        <div class="text">
-          <div class="writeup" >
-            I decided to check the website hosted on port 80, I found the home page and a page called
-            operatives i found a list of what appear to be usernames (<a target="_" href="https://tryhackme.com/p/Sq00ky">sp00ky</a> help in room creation)
-          </p><br>
-              <img src="media/list.png" alt="usernames" />
-              <br><br>
-              <p>i found &quot;/zYdHuAKjP&quot; in nmap results</p><br>
-              <img src="media/nmap.png" alt="/zYdHuAKjP" /><br>
-              <p>when i open it on port 80 i found this page that has access denied</p>
-              <br>
-              <img src="media/denied.png" alt="denied" />
-              <br><br>
-              <p>Using the developer tools in firefox, I was able to find a cookie called
-              access which has it’s value set to denied</p>
-              <br>
-          <img src="media/cookie.png" alt="cookie" />
-            <p><br>
-              I changed this value to granted, and then reloaded the page. This worked and I
-              was presented with a new message on the web page.
-            </p><br>
-            <img src="media/granted.png" alt="granted" />
-          </div>
-        </div>
-        <h1 class="title">Decoding The Cipher</h1>
-        <div class="text">
-          <div class="writeup" >
-            <p>
-              It looks like there is some kind of cipher encrypted message on the page which
-              looks like possible credentials (i.e. username::password). After spending some
-              time on trying to decipher the message, I decided to look at the hint
-            </p><br>
-                <p>
-                  <strong>Hint</strong>: You’re going to want to write a
-                  <strong>Python</strong> script for this. <strong>‘zA’ = ‘a’</strong><br>
-               </p>
-            <p><br>
-              According to the hint, “zA = a”. After a brain storming, I realized that if
-              you change the letters to their ordered numerical position in the alphabet and
-              added them together, then you would get a new value which would represent the
-              ordered numerical position of another letter in the alphabet. The examples
-              below shows this.
-            </p><br><br>
+                    the scan found two open posts <b> port 80(http) </b> and <b>port 22(ssh)</b>
+                    </p>
+                </div>
+            </div>
+            <h1 class="title">web http</h1>
+            <div class="text">
+                <div class="writeup" >
+                    I decided to check the website hosted on port 80, I found the home page and a page called
+                    operatives i found a list of what appear to be usernames (<a target="_" href="https://tryhackme.com/p/Sq00ky">sp00ky</a> help in room creation)
+                    </p><br>
+                    <img src="media/list.png" alt="usernames" />
+                    <br><br>
+                    <p>i found &quot;/zYdHuAKjP&quot; in nmap results</p><br>
+                    <img src="media/nmap.png" alt="/zYdHuAKjP" /><br>
+                    <p>when i open it on port 80 i found this page that has access denied</p>
+                    <br>
+                    <img src="media/denied.png" alt="denied" />
+                    <br><br>
+                    <p>Using the developer tools in firefox, I was able to find a cookie called
+                    access which has it’s value set to denied</p>
+                    <br>
+                    <img src="media/cookie.png" alt="cookie" />
+                    <p><br>
+                    I changed this value to granted, and then reloaded the page. This worked and I
+                    was presented with a new message on the web page.
+                    </p><br>
+                    <img src="media/granted.png" alt="granted" />
+                </div>
+            </div>
+            <h1 class="title">Decoding The Cipher</h1>
+            <div class="text">
+                <div class="writeup" >
+                    <p>
+                    It looks like there is some kind of cipher encrypted message on the page which
+                    looks like possible credentials (i.e. username::password). After spending some
+                    time on trying to decipher the message, I decided to look at the hint
+                    </p><br>
+                    <p>
+                    <strong>Hint</strong>: You’re going to want to write a
+                    <strong>Python</strong> script for this. <strong>‘zA’ = ‘a’</strong><br>
+                    </p>
+                    <p><br>
+                    According to the hint, “zA = a”. After a brain storming, I realized that if
+                    you change the letters to their ordered numerical position in the alphabet and
+                    added them together, then you would get a new value which would represent the
+                    ordered numerical position of another letter in the alphabet. The examples
+                    below shows this.
+                    </p><br><br>
 
-            <!-- EXAMPLE 1 -->
-            <p style="text-align: left;" class="title"><b>example 1</b></p>
-            <code style="text-align: left;">
-                'z' = 26 # 26th letter in the alphabet
-                'A' = 1 # 1st letter in the alphabet(26 + 1) % 26 = 1 = 'a'
+                    <!-- EXAMPLE 1 -->
+                    <p style="text-align: left;" class="title"><b>example 1</b></p>
+                    <code style="text-align: left;">
+                        'z' = 26 # 26th letter in the alphabet
+                        'A' = 1 # 1st letter in the alphabet(26 + 1) % 26 = 1 = 'a'
 
-            <p style="text-align: left;" class="title"><b>example 2</b></p>
-                'h' = 8
-                'E' = 5(8 + 5) % 26 = 13 = 'm'
+                        <p style="text-align: left;" class="title"><b>example 2</b></p>
+                        'h' = 8
+                        'E' = 5(8 + 5) % 26 = 13 = 'm'
 
-                N.B. Mod (i.e. '%') 26 is used since there are only 26 letters in the alphabet.
-            </code>
-            <p style="text-align: left;" class="title"><b>script</b></p>
-            <p></br>
-              It is possible to perform these calculations manually but I decided to write a
-              simple python script to do it with the help of some online sources
-            </p>
-            <pre style="text-align: left;font-size: 20px;"><code class="language-python">
+                        N.B. Mod (i.e. '%') 26 is used since there are only 26 letters in the alphabet.
+                    </code>
+                    <p style="text-align: left;" class="title"><b>script</b></p>
+                    <p></br>
+                    It is possible to perform these calculations manually but I decided to write a
+                    simple python script to do it with the help of some online sources
+                    </p>
+                    <pre style="text-align: left;font-size: 20px;"><code class="language-python">
 
 <code class="python_comment">#! /bin/python3.8 </code>
 
