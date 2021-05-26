@@ -28,7 +28,6 @@ body {
   display: flex;
   position: fixed;
   width: 100%;
-  top: 0;
   justify-content: space-between;
   font-size: 28px;
   color: var(--font_color);
