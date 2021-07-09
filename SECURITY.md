@@ -9,5 +9,5 @@
 
 ## Reporting a Vulnerability
 
-you can open an issue on github or 
-contact us over security@http://abdellatifdev.xyz/
+you can open an issue on github or
+contact us over contact@http://abdellatifdev.xyz/

@@ -15,9 +15,9 @@ try:
         except KeyboardInterrupt:
             httpd.shutdown()
             exit("\nclosing dev server...")
-        except :
+        except Exception as e:
             httpd.shutdown()
-            exit("\nerror happened...")
+            exit("e")
 
     httpd.shutdown()
 except Exception as e:
